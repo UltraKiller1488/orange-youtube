@@ -1,0 +1,14 @@
+.app {
+  background: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

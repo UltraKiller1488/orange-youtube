@@ -1,0 +1,577 @@
+.corrupted-file {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+  cursor: default;
+}
+
+.corrupted-file.cursor-gone {
+  cursor: none;
+}
+
+/* Фоновые слои коррупции */
+.data-corruption-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, #001100 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, #000000 0%, transparent 50%);
+  opacity: calc(0.3 * var(--corruption-level, 0));
+  animation: data-corrupt 2s infinite;
+}
+
+.memory-leak {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(45deg, transparent 49%, rgba(0, 255, 0, 0.1) 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(0, 255, 0, 0.1) 50%, transparent 51%);
+  background-size: 20px 20px;
+  animation: memory-leak 10s linear infinite;
+  opacity: calc(0.2 * var(--corruption-level, 0));
+}
+
+.sector-errors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%);
+  animation: sector-error 5s infinite alternate;
+  opacity: calc(0.4 * var(--corruption-level, 0));
+}
+
+.binary-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 0, 0.05) 2px,
+      rgba(0, 255, 0, 0.05) 4px
+    );
+  animation: binary-fall 20s linear infinite;
+}
+
+/* Фрагменты данных */
+.file-fragmentation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.data-fragment {
+  position: absolute;
+  font-size: 0.8rem;
+  color: rgba(0, 255, 0, 0.7);
+  text-shadow: 0 0 5px #00ff00;
+  opacity: 0.6;
+}
+
+/* Основной контент */
+.corrupted-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Заголовок файла */
+.file-header {
+  margin-bottom: 3rem;
+}
+
+.corrupted-title {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.title-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.title-layer.base {
+  color: #00ff00;
+  position: relative;
+  z-index: 1;
+}
+
+.title-layer.glitch-1 {
+  color: #ff00ff;
+  z-index: 2;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.title-layer.glitch-2 {
+  color: #00ffff;
+  z-index: 3;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+.file-meta {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  font-size: 1rem;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.meta-item {
+  padding: 0.5rem 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  animation: meta-flicker 4s infinite;
+}
+
+.meta-item:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.meta-item:nth-child(3) {
+  animation-delay: 2s;
+}
+
+/* Предупреждение о коррупции */
+.corruption-warning {
+  background: rgba(0, 20, 0, 0.9);
+  border: 2px solid #00ff00;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  text-align: left;
+  box-shadow: 
+    inset 0 0 30px rgba(0, 255, 0, 0.3),
+    0 0 40px rgba(0, 255, 0, 0.2);
+  animation: warning-glitch 5s infinite;
+}
+
+.warning-header {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff0000;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px #ff0000;
+  animation: header-pulse 2s infinite;
+}
+
+.error-list {
+  margin: 1.5rem 0;
+}
+
+.error-item {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: rgba(255, 0, 0, 0.1);
+  border-left: 3px solid #ff0000;
+  animation: error-flicker 6s infinite;
+}
+
+.error-code {
+  color: #ff0000;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ff0000;
+}
+
+.error-desc {
+  color: #00ff00;
+  margin-left: 1rem;
+}
+
+.error-item:nth-child(even) {
+  animation-delay: 2s;
+}
+
+.error-item:nth-child(3n) {
+  animation-delay: 4s;
+}
+
+.data-loss-notice {
+  font-size: 1.1rem;
+  color: #ff0000;
+  text-align: center;
+  margin-top: 1.5rem;
+  text-shadow: 0 0 8px #ff0000;
+  animation: data-loss-alert 3s infinite;
+  line-height: 1.5;
+}
+
+/* Кнопка восстановления */
+.recover-button {
+  position: relative;
+  background: rgba(0, 20, 0, 0.9);
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 1.5rem 3rem;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+  text-shadow: 0 0 10px #00ff00;
+  box-shadow: 
+    0 0 25px rgba(0, 255, 0, 0.5),
+    inset 0 0 25px rgba(0, 255, 0, 0.2);
+  /* Убираем фильтры из Framer Motion и добавляем сюда */
+  filter: brightness(1) contrast(1);
+}
+
+.recover-button:hover {
+  filter: brightness(1.3) contrast(1.5);
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 
+    0 0 35px rgba(0, 255, 0, 0.7),
+    inset 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.button-corruption {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.recover-button:hover .button-corruption {
+  left: 100%;
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.button-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.1);
+  opacity: 0;
+  animation: button-glitch 3s infinite;
+}
+
+.button-warning {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  color: #ff0000;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.recover-button:hover .button-warning {
+  opacity: 1;
+  animation: warning-bounce 0.5s infinite alternate;
+}
+
+/* Эффекты при наведении */
+.hover-corruption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.data-stream {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Плавающий глитч-текст */
+.floating-glitch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1rem;
+  color: #ff0000;
+  text-shadow: 0 0 5px #ff0000;
+  animation: floating-glitch 2s infinite;
+  z-index: 4;
+}
+
+/* Эффект системного сбоя */
+.system-crash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crash-screen {
+  text-align: left;
+  padding: 2rem;
+  background: #000;
+  border: 2px solid #ff0000;
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.kernel-panic {
+  font-size: 2rem;
+  color: #ff0000;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #ff0000;
+  animation: panic-blink 0.5s infinite;
+}
+
+.stack-trace {
+  font-size: 0.9rem;
+  color: #00ff00;
+  margin-bottom: 1rem;
+}
+
+.trace-line {
+  margin: 0.2rem 0;
+  animation: trace-flicker 0.1s infinite;
+}
+
+.trace-line:nth-child(2n) {
+  animation-delay: 0.05s;
+}
+
+.fatal-error {
+  font-size: 1.2rem;
+  color: #ff0000;
+  text-align: center;
+  margin-top: 1rem;
+  text-shadow: 0 0 8px #ff0000;
+  animation: fatal-alert 1s infinite;
+}
+
+/* Статус бар */
+.corruption-status {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 3;
+}
+
+.status-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.corruption-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00, #ff0000);
+  transition: width 0.5s;
+  animation: progress-glitch 2s infinite;
+}
+
+.status-text {
+  text-align: center;
+  font-size: 1rem;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  animation: status-pulse 3s infinite;
+}
+
+/* HEX поток */
+.hex-stream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hex-line {
+  position: absolute;
+  font-size: 0.7rem;
+  color: rgba(0, 255, 0, 0.3);
+  animation: hex-fall linear infinite;
+  white-space: nowrap;
+}
+
+/* Анимации */
+@keyframes data-corrupt {
+  0%, 100% { opacity: calc(0.2 * var(--corruption-level, 0)); }
+  50% { opacity: calc(0.4 * var(--corruption-level, 0)); }
+}
+
+@keyframes memory-leak {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+@keyframes sector-error {
+  0% { transform: translateX(-10px); }
+  100% { transform: translateX(10px); }
+}
+
+@keyframes binary-fall {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+@keyframes meta-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes warning-glitch {
+  0%, 100% { box-shadow: inset 0 0 30px rgba(0, 255, 0, 0.3), 0 0 40px rgba(0, 255, 0, 0.2); }
+  50% { box-shadow: inset 0 0 30px rgba(255, 0, 0, 0.3), 0 0 40px rgba(255, 0, 0, 0.2); }
+}
+
+@keyframes header-pulse {
+  0%, 100% { text-shadow: 0 0 10px #ff0000; }
+  50% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+}
+
+@keyframes error-flicker {
+  0%, 100% { background: rgba(255, 0, 0, 0.1); }
+  50% { background: rgba(255, 0, 0, 0.2); }
+}
+
+@keyframes data-loss-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; text-shadow: 0 0 12px #ff0000; }
+}
+
+@keyframes button-glitch {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes warning-bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+@keyframes floating-glitch {
+  0%, 100% { opacity: 0.7; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(10px); }
+}
+
+@keyframes panic-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes trace-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes fatal-alert {
+  0%, 100% { color: #ff0000; }
+  50% { color: #ffff00; }
+}
+
+@keyframes progress-glitch {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes hex-fall {
+  0% { transform: translateY(-100px); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .corrupted-content {
+    padding: 1rem;
+  }
+  
+  .title-layer {
+    font-size: 2rem;
+  }
+  
+  .file-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .corruption-warning {
+    padding: 1.5rem;
+  }
+  
+  .recover-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .crash-screen {
+    max-width: 95%;
+    padding: 1rem;
+  }
+}
