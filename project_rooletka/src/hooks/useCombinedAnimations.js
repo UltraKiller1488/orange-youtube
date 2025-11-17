@@ -54,10 +54,33 @@ export const useCombinedAnimations = () => {
     )
   }
 
+  const liquidDistortion = (element, duration = 2) => {
+    if (!element) {
+      console.warn('GSAP: Element not found for liquid distortion')
+      return null
+    }
+
+    return gsap.to(element, {
+      duration,
+      ease: "sine.inOut",
+      motionPath: {
+        path: [
+          {x: 0, y: 0},
+          {x: 10, y: 5},
+          {x: -5, y: 15},
+          {x: 5, y: -10},
+          {x: 0, y: 0}
+        ],
+        type: "cubic"
+      }
+    })
+  }
+
   return {
     glitchEffect,
     corruptionWave,
     dataStreamEffect,
+    liquidDistortion,
     timeline: tl.current
   }
 }

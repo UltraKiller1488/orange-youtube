@@ -5,10 +5,23 @@
   min-height: 100vh;
   overflow: hidden;
   position: relative;
+  cursor: none;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.cursor-manager,
+.custom-cursor,
+.cursor-follower,
+.matrix-cursor,
+.neural-cursor,
+.trace-cursor,
+.pulse-cursor,
+.quantum-cursor {
+  z-index: 10000 !important;
+  pointer-events: none !important;
 }

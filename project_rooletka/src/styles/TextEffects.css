@@ -1,0 +1,81 @@
+@keyframes text-explosion {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes text-wave {
+  0%, 100% {
+    transform: translate(-50%, -50%) skew(0deg, 0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) skew(2deg, -1deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) skew(-1deg, 2deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) skew(1deg, -2deg);
+  }
+}
+
+@keyframes text-blur {
+  0%, 100% {
+    filter: blur(0px) contrast(100%);
+  }
+  50% {
+    filter: blur(2px) contrast(200%);
+  }
+}
+
+.text-explosion {
+  animation: text-explosion 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.text-wave {
+  animation: text-wave 0.3s ease-in-out infinite;
+}
+
+.text-blur {
+  animation: text-blur 0.4s ease-in-out infinite;
+}
+
+.char-flicker {
+  animation: char-flicker 0.1s infinite;
+}
+
+@keyframes char-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ffff00,
+    #00ffff,
+    #ff00ff,
+    #ff0000
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 2s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

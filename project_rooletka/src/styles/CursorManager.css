@@ -1,0 +1,252 @@
+.cursor-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 20, 0, 0.95);
+  border: 2px solid #00ff00;
+  border-radius: 15px;
+  padding: 0;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 50px rgba(0, 255, 0, 0.3);
+  min-width: 400px;
+  max-width: 90vw;
+}
+
+.cursor-menu.dark-theme {
+  background: rgba(20, 0, 0, 0.95);
+  border-color: #ff0000;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+}
+
+.cursor-menu-content {
+  padding: 1.5rem;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.menu-header h3 {
+  color: #00ff00;
+  margin: 0;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.dark-theme .menu-header h3 {
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+.close-btn {
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.close-btn:hover {
+  background: rgba(0, 255, 0, 0.2);
+}
+
+.dark-theme .close-btn {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.dark-theme .close-btn:hover {
+  background: rgba(255, 0, 0, 0.2);
+}
+
+.theme-indicator {
+  text-align: center;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  border-radius: 8px;
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.dark-theme .theme-indicator {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff0000;
+}
+
+.current-cursor-info {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #00ff00;
+  font-size: 0.9rem;
+}
+
+.dark-theme .current-cursor-info {
+  color: #ff0000;
+}
+
+.cursor-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cursor-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.cursor-option:hover {
+  background: rgba(0, 255, 0, 0.2);
+  transform: translateX(5px);
+}
+
+.cursor-option.active {
+  background: rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.dark-theme .cursor-option {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.dark-theme .cursor-option:hover {
+  background: rgba(255, 0, 0, 0.2);
+}
+
+.dark-theme .cursor-option.active {
+  background: rgba(255, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.cursor-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.cursor-description {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+
+.cursor-hotkey {
+  background: rgba(0, 255, 0, 0.3);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.dark-theme .cursor-hotkey {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+.cursor-hotkeys {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #00ff00;
+  color: #00ff00;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.dark-theme .cursor-hotkeys {
+  border-top-color: #ff0000;
+  color: #ff0000;
+}
+
+.cursor-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 255, 0, 0.2);
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  z-index: 9997;
+  backdrop-filter: blur(5px);
+}
+
+.cursor-indicator.dark {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.debug-info {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-size: 0.7rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.debug-info summary {
+  cursor: pointer;
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+}
+
+.debug-info pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #ccc;
+  font-size: 0.6rem;
+}
+
+.debug-info button {
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 0, 0, 0.3);
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.6rem;
+}
+
+.cursor-menu-open * {
+  cursor: default;
+}
+
+.cursor-menu-open .cursor-option,
+.cursor-menu-open .close-btn {
+  cursor: pointer;
+}
+
+.cursor-menu-open .custom-cursor,
+.cursor-menu-open .cursor-follower,
+.cursor-menu-open .matrix-cursor,
+.cursor-menu-open .hexagon-cursor,
+.cursor-menu-open .neural-cursor,
+.cursor-menu-open .trace-cursor,
+.cursor-menu-open .pulse-cursor,
+.cursor-menu-open .quantum-cursor {
+  display: none;
+}

@@ -82,19 +82,76 @@
 
 .wheel-text {
   position: absolute;
-  top: -60px;
-  right: -120px;
-  width: 240px;
-  color: #0f0;
-  font-size: 1rem;
+  top: -80px;
+  right: -140px;
+  width: 280px;
+  color: #fff;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 0 10px #0f0;
+  text-shadow: 
+    0 0 10px #0f0,
+    0 0 20px #0f0,
+    0 0 30px #0f0,
+    0 0 5px #000;
   transform: rotate(90deg);
   white-space: nowrap;
   z-index: 4;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #0f0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.wheel-item::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  top: -7px;
+  right: -8px;
+  box-shadow: 
+    0 0 15px #0f0,
+    0 0 30px #0f0,
+    0 0 5px #000;
+  z-index: 3;
+  border: 1px solid #000;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border: 4px solid #0f0;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 3s cubic-bezier(0.2, 0.8, 0.3, 1);
+  box-shadow: 
+    0 0 50px rgba(0, 255, 0, 0.6),
+    inset 0 0 50px rgba(0, 255, 0, 0.2);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 50px;
+  background: #ff0;
+  box-shadow: 
+    0 0 20px #ff0,
+    0 0 40px #ff0;
+  z-index: 6;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  animation: pointer-glow 1s infinite alternate;
 }
 
 .wheel-center {
@@ -102,42 +159,45 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background: #000;
-  border: 3px solid #f0f;
+  border: 4px solid #f0f;
   border-radius: 50%;
   box-shadow: 
-    0 0 30px #f0f,
-    inset 0 0 20px rgba(255, 0, 255, 0.3);
+    0 0 40px #f0f,
+    inset 0 0 30px rgba(255, 0, 255, 0.4);
   z-index: 5;
   animation: center-pulse 3s infinite alternate;
 }
 
-@keyframes center-pulse {
-  0% { box-shadow: 0 0 30px #f0f, inset 0 0 20px rgba(255, 0, 255, 0.3); }
-  100% { box-shadow: 0 0 50px #f0f, inset 0 0 30px rgba(255, 0, 255, 0.5); }
+@media (max-width: 1200px) {
+  .wheel-text {
+    font-size: 1rem;
+    width: 220px;
+    right: -110px;
+    top: -70px;
+  }
 }
 
-.wheel-pointer {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 40px;
-  background: #ff0;
-  box-shadow: 0 0 20px #ff0;
-  z-index: 6;
-  clip-path: polygon(50% 100%, 0 0, 100% 0);
-  animation: pointer-glow 1s infinite alternate;
+@media (max-width: 768px) {
+  .wheel-text {
+    font-size: 0.9rem;
+    width: 180px;
+    right: -90px;
+    top: -60px;
+  }
 }
 
-@keyframes pointer-glow {
-  0% { box-shadow: 0 0 20px #ff0; }
-  100% { box-shadow: 0 0 30px #ff0, 0 0 40px #ff0; }
+@media (max-width: 480px) {
+  .wheel-text {
+    font-size: 0.8rem;
+    width: 150px;
+    right: -75px;
+    top: -50px;
+    padding: 3px 6px;
+  }
 }
-
 .current-quote {
   display: flex;
   flex-direction: column;
@@ -255,7 +315,7 @@
 .spin-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  transform: none !important;
+  transform: none;
 }
 
 .spin-btn::before, .favorite-btn::before, .reset-btn::before {
@@ -299,25 +359,24 @@
   text-shadow: 0 0 10px #0ff;
 }
 
-/* Специальные эффекты для химической темы */
 .chemical-reaction {
-  border: 3px solid #f0f !important;
+  border: 3px solid #f0f;
   box-shadow: 
     0 0 50px rgba(255, 0, 255, 0.6),
-    inset 0 0 50px rgba(255, 0, 255, 0.2) !important;
+    inset 0 0 50px rgba(255, 0, 255, 0.2);
 }
 
 .surgical-scar {
-  border: 3px solid #8b0000 !important;
+  border: 3px solid #8b0000;
   box-shadow: 
     0 0 30px #8b0000,
-    inset 0 0 20px rgba(139, 0, 0, 0.5) !important;
+    inset 0 0 20px rgba(139, 0, 0, 0.5);
 }
 
 .injection-needle {
-  background: #8b0000 !important;
-  box-shadow: 0 0 20px #8b0000 !important;
-  clip-path: polygon(50% 100%, 45% 0, 55% 0) !important;
+  background: #8b0000;
+  box-shadow: 0 0 20px #8b0000;
+  clip-path: polygon(50% 100%, 45% 0, 55% 0);
 }
 
 .chemical-drip {
@@ -349,44 +408,42 @@
   z-index: 999;
 }
 
-/* Обновленные цвета для кнопок */
 .spin-btn {
-  border-color: #f0f !important;
-  color: #f0f !important;
+  border-color: #f0f;
+  color: #f0f;
 }
 
 .spin-btn:hover {
-  background: rgba(255, 0, 255, 0.15) !important;
+  background: rgba(255, 0, 255, 0.15);
   box-shadow: 
     0 0 20px #f0f,
-    inset 0 0 10px rgba(255, 0, 255, 0.1) !important;
+    inset 0 0 10px rgba(255, 0, 255, 0.1);
 }
 
 .favorite-btn {
-  border-color: #8b0000 !important;
-  color: #8b0000 !important;
+  border-color: #8b0000;
+  color: #8b0000;
 }
 
 .favorite-btn:hover {
-  background: rgba(139, 0, 0, 0.15) !important;
+  background: rgba(139, 0, 0, 0.15);
   box-shadow: 
     0 0 20px #8b0000,
-    inset 0 0 10px rgba(139, 0, 0, 0.1) !important;
+    inset 0 0 10px rgba(139, 0, 0, 0.1);
 }
 
 .reset-btn {
-  border-color: #0ff !important;
-  color: #0ff !important;
+  border-color: #0ff;
+  color: #0ff;
 }
 
 .reset-btn:hover {
-  background: rgba(0, 255, 255, 0.15) !important;
+  background: rgba(0, 255, 255, 0.15);
   box-shadow: 
     0 0 20px #0ff,
-    inset 0 0 10px rgba(0, 255, 255, 0.1) !important;
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
 }
 
-/* Адаптивность */
 @media (max-width: 1200px) {
   .roulette-container {
     grid-template-columns: 1fr;
@@ -463,4 +520,62 @@
   .quote-text {
     font-size: 1.1rem;
   }
+}
+
+.wheel {
+  transform-origin: center center;
+  transition: none;
+  will-change: transform;
+}
+
+.wheel-pointer {
+  transform-origin: 50% 100%;
+  transition: none;
+}
+
+.quote-sets {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.set-btn {
+  background: transparent;
+  border: 1px solid #0ff;
+  color: #0ff;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.set-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px #0ff;
+}
+
+.quote-text {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-shadow: 
+    0 0 15px #0f0,
+    0 0 5px #0f0;
+  font-weight: 300;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+.quote-author {
+  font-size: 1.3rem;
+  color: #f0f;
+  text-align: right;
+  text-shadow: 
+    0 0 10px #f0f,
+    0 0 5px #f0f;
+  font-style: italic;
+  font-family: 'Courier New', monospace;
 }
